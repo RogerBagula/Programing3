@@ -1,0 +1,974 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     39299,        966]
+NotebookOptionsPosition[     37431,        926]
+NotebookOutlinePosition[     37907,        943]
+CellTagsIndexPosition[     37864,        940]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"midiIn", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "77", ",", "84", ",", "104", ",", "100", ",", "0", ",", "0", ",", "0", 
+     ",", "6", ",", "0", ",", "0", ",", "0", ",", "1", ",", "0", ",", "96", 
+     ",", "77", ",", "84", ",", "114", ",", "107", ",", "0", ",", "0", ",", 
+     "0", ",", "255", ",", "0", ",", "255", ",", "3", ",", "7", ",", "66", 
+     ",", "76", ",", "95", ",", "52", ",", "95", ",", "67", ",", "0", ",", 
+     "0", ",", "255", ",", "88", ",", "4", ",", "4", ",", "2", ",", "36", ",",
+      "8", ",", "0", ",", "255", ",", "88", ",", "4", ",", "4", ",", "2", ",",
+      "36", ",", "8", ",", "0", ",", "144", ",", "60", ",", "95", ",", "36", 
+     ",", "128", ",", "60", ",", "32", ",", "13", ",", "144", ",", "36", ",", 
+     "95", ",", "11", ",", "128", ",", "36", ",", "32", ",", "13", ",", "144",
+      ",", "48", ",", "95", ",", "10", ",", "128", ",", "48", ",", "32", ",", 
+     "13", ",", "144", ",", "48", ",", "127", ",", "13", ",", "128", ",", 
+     "48", ",", "32", ",", "11", ",", "144", ",", "60", ",", "95", ",", "13", 
+     ",", "128", ",", "60", ",", "32", ",", "13", ",", "144", ",", "48", ",", 
+     "95", ",", "10", ",", "128", ",", "48", ",", "32", ",", "12", ",", "144",
+      ",", "72", ",", "95", ",", "25", ",", "144", ",", "48", ",", "95", ",", 
+     "9", ",", "128", ",", "72", ",", "32", ",", "27", ",", "128", ",", "48", 
+     ",", "32", ",", "11", ",", "144", ",", "48", ",", "127", ",", "13", ",", 
+     "128", ",", "48", ",", "32", ",", "11", ",", "144", ",", "48", ",", "95",
+      ",", "12", ",", "128", ",", "48", ",", "32", ",", "12", ",", "144", ",",
+      "60", ",", "95", ",", "12", ",", "128", ",", "60", ",", "32", ",", "13",
+      ",", "144", ",", "48", ",", "127", ",", "10", ",", "128", ",", "48", 
+     ",", "32", ",", "13", ",", "144", ",", "48", ",", "127", ",", "11", ",", 
+     "128", ",", "48", ",", "32", ",", "13", ",", "144", ",", "48", ",", "95",
+      ",", "13", ",", "128", ",", "48", ",", "32", ",", "11", ",", "144", ",",
+      "60", ",", "95", ",", "37", ",", "128", ",", "60", ",", "32", ",", "12",
+      ",", "144", ",", "36", ",", "95", ",", "11", ",", "128", ",", "36", ",",
+      "32", ",", "13", ",", "144", ",", "48", ",", "95", ",", "12", ",", 
+     "128", ",", "48", ",", "32", ",", "11", ",", "144", ",", "48", ",", 
+     "127", ",", "13", ",", "128", ",", "48", ",", "32", ",", "11", ",", 
+     "144", ",", "60", ",", "95", ",", "12", ",", "128", ",", "60", ",", "32",
+      ",", "13", ",", "144", ",", "48", ",", "95", ",", "11", ",", "128", ",",
+      "48", ",", "32", ",", "11", ",", "144", ",", "72", ",", "95", ",", "26",
+      ",", "144", ",", "48", ",", "95", ",", "9", ",", "128", ",", "72", ",", 
+     "32", ",", "26", ",", "128", ",", "48", ",", "32", ",", "12", ",", "144",
+      ",", "48", ",", "127", ",", "13", ",", "128", ",", "48", ",", "32", ",",
+      "10", ",", "144", ",", "48", ",", "95", ",", "13", ",", "128", ",", 
+     "48", ",", "32", ",", "12", ",", "144", ",", "60", ",", "95", ",", "12", 
+     ",", "128", ",", "60", ",", "32", ",", "13", ",", "144", ",", "48", ",", 
+     "127", ",", "10", ",", "128", ",", "48", ",", "32", ",", "14", ",", 
+     "144", ",", "48", ",", "127", ",", "10", ",", "128", ",", "48", ",", 
+     "32", ",", "13", ",", "144", ",", "48", ",", "95", ",", "13", ",", "128",
+      ",", "48", ",", "32", ",", "0", ",", "255", ",", "47", ",", "0"}], 
+    "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.541594502547971*^9, 3.54159450456428*^9}, 
+   3.541594571660582*^9, {3.5415983127681103`*^9, 3.541598328768119*^9}},
+ CellLabel->"In[62]:=",ExpressionUUID->"7c112dee-77e5-47e8-b4e7-c88758334885"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"tracknumber", "=", "1"}]], "Input",
+ CellChangeTimes->{{3.541594536140348*^9, 3.5415945524817257`*^9}, 
+   3.541598316050497*^9},
+ CellLabel->"In[63]:=",ExpressionUUID->"8cbd5333-2efc-4923-bc26-05f693e07f91"],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.5415946591229887`*^9, 3.541594730461025*^9, 
+  3.541598352495059*^9, 3.982236412557251*^9},
+ CellLabel->"Out[63]=",ExpressionUUID->"7e7e288c-0505-426c-b6fa-618283cef014"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Length", "[", "midiIn", "]"}], "/", "tracknumber"}]], "Input",
+ CellChangeTimes->{{3.5415945089524097`*^9, 3.541594568731061*^9}},
+ CellLabel->"In[64]:=",ExpressionUUID->"b287c47f-3066-404e-9820-a3e1c3bebc05"],
+
+Cell[BoxData["277"], "Output",
+ CellChangeTimes->{3.541594659194173*^9, 3.541594730498188*^9, 
+  3.5415983525495443`*^9, 3.9822364125945597`*^9},
+ CellLabel->"Out[64]=",ExpressionUUID->"958f9a6d-f9cb-4695-967a-e85efe5c7bb4"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"ch", "=", "1"}], ";"}], 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"assuming", " ", "a", " ", "range", " ", "of", " ", "1"}], "-", 
+    "16"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"noteonPos", "=", 
+    RowBox[{"Position", "[", 
+     RowBox[{"midiIn", ",", 
+      RowBox[{"143", "+", "ch"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"noteoffPos", "=", 
+    RowBox[{"Position", "[", 
+     RowBox[{"midiIn", ",", 
+      RowBox[{"127", "+", "ch"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"timeEvents", "=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{
+      RowBox[{"Union", "[", 
+       RowBox[{"noteonPos", ",", "noteoffPos"}], "]"}], "-", "1"}], "]"}]}], 
+   ";", 
+   RowBox[{"(*", 
+    RowBox[{
+    "These", " ", "are", " ", "timing", " ", "events", " ", "since", " ", 
+     "the", " ", "last", " ", "timing", " ", 
+     RowBox[{"event", "."}]}], "*)"}], 
+   RowBox[{"realTimeEvents", "=", 
+    RowBox[{"Accumulate", "[", 
+     RowBox[{"midiIn", "[", 
+      RowBox[{"[", "timeEvents", "]"}], "]"}], "]"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Time", " ", "events", " ", "are", " ", "accumulated", " ", "to", " ", 
+     "give", " ", "actual", " ", "timing", " ", 
+     RowBox[{"events", "."}]}], "*)"}], 
+   RowBox[{"midi", "=", 
+    RowBox[{"ReplacePart", "[", 
+     RowBox[{"midiIn", ",", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"timeEvents", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "\[Rule]", 
+         RowBox[{"realTimeEvents", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"Length", "[", "timeEvents", "]"}]}], "}"}]}], "]"}]}], 
+     "]"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+    "The", " ", "original", " ", "timing", " ", "events", " ", "are", " ", 
+     "replaced", " ", "by", " ", "the", " ", "real", " ", "timing", " ", 
+     "events"}], "*)"}], 
+   RowBox[{
+    RowBox[{"extractEvents", "[", 
+     RowBox[{"data_List", ",", 
+      RowBox[{"{", "x_", "}"}]}], "]"}], ":=", 
+    RowBox[{"Extract", "[", 
+     RowBox[{"data", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"x", "-", "1"}], "}"}], ",", 
+        RowBox[{"{", "x", "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", "+", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", "+", "2"}], "}"}]}], "}"}]}], "]"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{
+     "This", " ", "function", " ", "is", " ", "for", " ", "extracting", " ", 
+      "timing"}], ",", 
+     RowBox[{"note", " ", "event"}], ",", 
+     RowBox[{"note", " ", "number"}], ",", 
+     RowBox[{
+     "and", " ", "velocity", " ", "for", " ", "each", " ", "note", " ", 
+      RowBox[{"on", "/", "off"}], " ", "evnt"}]}], "*)"}], 
+   RowBox[{"noteOn", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{"#", ",", 
+         RowBox[{"extractEvents", "[", 
+          RowBox[{"midi", ",", "#"}], "]"}]}], "}"}], "]"}], "&"}], "/@", 
+     "noteonPos"}]}], ";", 
+   RowBox[{"(*", 
+    RowBox[{
+    "This", " ", "extracts", " ", "each", " ", "note", " ", "on", " ", 
+     "event", " ", "and", " ", "prepends", " ", "with", " ", "the", " ", 
+     "events", " ", "position", " ", "in", " ", "the", " ", "imported", " ", 
+     "list"}], "*)"}], 
+   RowBox[{"noteOff", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Flatten", "[", 
+       RowBox[{"{", 
+        RowBox[{"#", ",", 
+         RowBox[{"extractEvents", "[", 
+          RowBox[{"midi", ",", "#"}], "]"}]}], "}"}], "]"}], "&"}], "/@", 
+     "noteoffPos"}]}], ";"}], 
+  RowBox[{"(*", 
+   RowBox[{
+   "This", " ", "extracts", " ", "each", " ", "note", " ", "off", " ", 
+    "event", " ", "and", " ", "prepends", " ", "with", " ", "the", " ", 
+    "events", " ", "position", " ", "in", " ", "the", " ", "imported", " ", 
+    "list"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.541594418502099*^9, 3.541594418516121*^9}, 
+   3.5415944599908867`*^9, {3.541594773323255*^9, 3.541594791072949*^9}},
+ CellLabel->"In[65]:=",ExpressionUUID->"3c1ec196-5e68-42ca-ac89-3a9dc5099bcb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"notes", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"noteOn", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], ",", 
+      RowBox[{"First", "[", 
+       RowBox[{"Select", "[", 
+        RowBox[{"noteOff", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ">", 
+            RowBox[{"noteOn", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "1"}], "]"}], "]"}]}], "&&", 
+           RowBox[{
+            RowBox[{"#", "[", 
+             RowBox[{"[", "4", "]"}], "]"}], "\[Equal]", 
+            RowBox[{"noteOn", "[", 
+             RowBox[{"[", 
+              RowBox[{"i", ",", "4"}], "]"}], "]"}]}]}], "&"}]}], "]"}], 
+       "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", 
+      RowBox[{"Length", "[", "noteOn", "]"}]}], "}"}]}], "]"}], 
+  RowBox[{"(*", 
+   RowBox[{
+   "Pair", " ", "the", " ", "correct", " ", "note", " ", "off", " ", 
+    "messages", " ", "with", " ", "each", " ", "note", " ", "on", " ", 
+    "message"}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.541594418502099*^9, 3.541594418516121*^9}, 
+   3.5415944599908867`*^9, {3.541594773323255*^9, 3.541594791072949*^9}},
+ CellLabel->"In[69]:=",ExpressionUUID->"134007ac-017e-41e3-8508-7a2291adeceb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"51", ",", "0", ",", "144", ",", "60", ",", "95"}], "}"}], ",", 
+     
+     RowBox[{"{", 
+      RowBox[{"55", ",", "36", ",", "128", ",", "60", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"59", ",", "49", ",", "144", ",", "36", ",", "95"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"63", ",", "60", ",", "128", ",", "36", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"67", ",", "73", ",", "144", ",", "48", ",", "95"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"71", ",", "83", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"75", ",", "96", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"79", ",", "109", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"83", ",", "120", ",", "144", ",", "60", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"87", ",", "133", ",", "128", ",", "60", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"91", ",", "146", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"95", ",", "156", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"99", ",", "168", ",", "144", ",", "72", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"107", ",", "202", ",", "128", ",", "72", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"103", ",", "193", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"111", ",", "229", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"115", ",", "240", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"119", ",", "253", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"123", ",", "264", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"127", ",", "276", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"131", ",", "288", ",", "144", ",", "60", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"135", ",", "300", ",", "128", ",", "60", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"139", ",", "313", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"143", ",", "323", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"147", ",", "336", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"151", ",", "347", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"155", ",", "360", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"159", ",", "373", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"163", ",", "384", ",", "144", ",", "60", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"167", ",", "421", ",", "128", ",", "60", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"171", ",", "433", ",", "144", ",", "36", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"175", ",", "444", ",", "128", ",", "36", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"179", ",", "457", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"183", ",", "469", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"187", ",", "480", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"191", ",", "493", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"195", ",", "504", ",", "144", ",", "60", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"199", ",", "516", ",", "128", ",", "60", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"203", ",", "529", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"207", ",", "540", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"211", ",", "551", ",", "144", ",", "72", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"219", ",", "586", ",", "128", ",", "72", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"215", ",", "577", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"223", ",", "612", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"227", ",", "624", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"231", ",", "637", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"235", ",", "647", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"239", ",", "660", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"243", ",", "672", ",", "144", ",", "60", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"247", ",", "684", ",", "128", ",", "60", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"251", ",", "697", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"255", ",", "707", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"259", ",", "721", ",", "144", ",", "48", ",", "127"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"263", ",", "731", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"267", ",", "744", ",", "144", ",", "48", ",", "95"}], "}"}], 
+     ",", 
+     RowBox[{"{", 
+      RowBox[{"271", ",", "757", ",", "128", ",", "48", ",", "32"}], "}"}]}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5415947975791197`*^9, 3.5415983526356916`*^9, 
+  3.9822364126356573`*^9},
+ CellLabel->"Out[69]=",ExpressionUUID->"3513ff73-35b1-49b7-967b-e14c3a64266d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"g", "=", 
+  RowBox[{"Sound", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"SoundNote", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"notes", "[", 
+           RowBox[{"[", "n", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "[", 
+         RowBox[{"[", "4", "]"}], "]"}], "-", "60"}], ",", "0.2", ",", 
+       "\"\<JazzGuitar\>\""}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", 
+       RowBox[{"Length", "[", "notes", "]"}]}], "}"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.541594894204772*^9, 3.541594908186063*^9}, {
+  3.541594954116077*^9, 3.541594957769392*^9}, {3.541595368210843*^9, 
+  3.54159539009699*^9}, {3.541598379330798*^9, 3.541598380962047*^9}, {
+  3.9822363560492268`*^9, 3.982236357304833*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"e51290e7-a8ef-452d-82a2-1f6c0eef858e"],
+
+Cell[BoxData[
+ InterpretationBox[
+  GraphicsBox[{
+    {RGBColor[0.9568627450980393, 0.9568627450980393, 0.9568627450980393], 
+     RectangleBox[{0, 0}, {360, -164}]}, {InsetBox[
+      GraphicsBox[
+       {Hue[0.06265941062884, 0.9, 0.7], 
+        StyleBox[{
+          RectangleBox[{0.2, 0.14627268031370075}, \
+{0.39, 0.1581774422184626}], 
+          RectangleBox[{3., 0.14627268031370075}, \
+{3.1900000000000004, 0.1581774422184626}], 
+          RectangleBox[{0.4, 0.2891298231708436}, {0.59, 0.3010345850756056}],
+           RectangleBox[{0.6, 0.2891298231708436}, \
+{0.79, 0.3010345850756056}], 
+          RectangleBox[{1., 0.2891298231708436}, {1.19, 0.3010345850756056}], 
+          RectangleBox[{1.4, 0.2891298231708436}, {1.59, 0.3010345850756056}],
+           RectangleBox[{1.6, 0.2891298231708436}, \
+{1.79, 0.3010345850756056}], 
+          RectangleBox[{1.8, 0.2891298231708436}, {1.99, 0.3010345850756056}],
+           RectangleBox[{2.2, 0.2891298231708436}, \
+{2.39, 0.3010345850756056}], 
+          RectangleBox[{2.4, 0.2891298231708436}, {2.59, 0.3010345850756056}],
+           RectangleBox[{2.6, 0.2891298231708436}, \
+{2.79, 0.3010345850756056}], 
+          RectangleBox[{3.2, 0.2891298231708436}, {3.39, 0.3010345850756056}],
+           RectangleBox[{3.4, 0.2891298231708436}, \
+{3.59, 0.3010345850756056}], 
+          RectangleBox[{3.8, 0.2891298231708436}, {3.99, 0.3010345850756056}],
+           RectangleBox[{4.2, 0.2891298231708436}, \
+{4.390000000000001, 0.3010345850756056}], 
+          RectangleBox[{4.4, 0.2891298231708436}, {4.59, 0.3010345850756056}],
+           RectangleBox[{4.6, 0.2891298231708436}, \
+{4.79, 0.3010345850756056}], 
+          RectangleBox[{5., 0.2891298231708436}, {5.19, 0.3010345850756056}], 
+          RectangleBox[{5.2, 0.2891298231708436}, \
+{5.390000000000001, 0.3010345850756056}], 
+          RectangleBox[{5.4, 0.2891298231708436}, {5.59, 0.3010345850756056}],
+           RectangleBox[{0., 0.43198696602798653}, \
+{0.19, 0.4438917279327484}], 
+          RectangleBox[{0.8, 0.43198696602798653}, \
+{0.99, 0.4438917279327484}], 
+          RectangleBox[{2., 0.43198696602798653}, \
+{2.1900000000000004, 0.4438917279327484}], 
+          RectangleBox[{2.8, 0.43198696602798653}, \
+{2.99, 0.4438917279327484}], 
+          RectangleBox[{3.6, 0.43198696602798653}, \
+{3.79, 0.4438917279327484}], 
+          RectangleBox[{4.8, 0.43198696602798653}, \
+{4.99, 0.4438917279327484}], 
+          RectangleBox[{1.2, 0.5748441088851295}, {1.39, 0.5867488707898912}],
+           RectangleBox[{4., 0.5748441088851295}, {4.19, 0.5867488707898912}]},
+         Antialiasing->True]},
+       AspectRatio->NCache[
+         Rational[6, 35], 0.17142857142857143`],
+       Background->GrayLevel[1],
+       Frame->True,
+       FrameStyle->GrayLevel[0.75],
+       FrameTicks->False,
+       ImagePadding->None,
+       PlotRange->{All, All},
+       PlotRangePadding->{Automatic, 0.05}], {180, -35}, 
+      ImageScaled[{0.5, 0.5}], {350, 60},
+      Background->RGBColor[
+       0.9568627450980393, 0.9568627450980393, 0.9568627450980393]], 
+     InsetBox[
+      GraphicsBox[
+       {GrayLevel[0.6], RectangleBox[{0, 0}]},
+       AspectRatio->NCache[
+         Rational[6, 35], 0.17142857142857143`],
+       Background->GrayLevel[1],
+       Frame->True,
+       FrameStyle->GrayLevel[0.75],
+       FrameTicks->False,
+       ImagePadding->None], {180, -100}, ImageScaled[{0.5, 0.5}], {350, 60},
+      Background->RGBColor[
+       0.9568627450980393, 0.9568627450980393, 0.9568627450980393]]}, InsetBox[
+     StyleBox[
+      TemplateBox[{
+        StyleBox[
+        "\" | \"", FontSize -> 14, FontColor -> 
+         RGBColor[0.5098039215686274, 0.5098039215686274, 0.5098039215686274],
+          StripOnInput -> False], 
+        StyleBox[
+         TemplateBox[{"\"5.6\"", "\" s\""}, "RowDefault"], FontColor -> 
+         RGBColor[0.5098039215686274, 0.5098039215686274, 0.5098039215686274],
+          StripOnInput -> False]},
+       "RowWithSeparator"], "DialogStyle",
+      StripOnInput->False], {355, -159}, Scaled[{1, 0}]], 
+    TagBox[{
+      {RGBColor[0.9568627450980393, 0.9568627450980393, 0.9568627450980393], 
+       RectangleBox[{5, -158}, {29, -135}]}, 
+      {RGBColor[0.27450980392156865`, 0.5411764705882353, 0.796078431372549], 
+       PolygonBox[
+        NCache[{{11, -157}, {11, -136}, {20., Rational[-293, 2]}, {11, -157}},
+          {{11, -157}, {11, -136}, {20., -146.5}, {11, -157}}]], 
+       StyleBox[{},
+        Antialiasing->False]}},
+     EventHandlerTag[{"MouseClicked" :> If[True, Sound`EmitMIDI[
+           Sound`MIDISequence[{
+             Sound`MIDITrack[{
+               Sound`MIDIEvent[0, "SetTempo", "Tempo" -> 1000000], 
+               Sound`MIDIEvent[
+               0, "ProgramCommand", "Channel" -> 0, "Value" -> 26], 
+               Sound`MIDIEvent[
+               0, "NoteOn", "Note" -> 60, "Channel" -> 0, "Velocity" -> 127], 
+               
+               Sound`MIDIEvent[
+               48, "NoteOff", "Note" -> 60, "Channel" -> 0, "Velocity" -> 0], 
+               
+               Sound`MIDIEvent[
+               48, "NoteOn", "Note" -> 36, "Channel" -> 0, "Velocity" -> 127], 
+               Sound`MIDIEvent[
+               96, "NoteOff", "Note" -> 36, "Channel" -> 0, "Velocity" -> 0], 
+               
+               Sound`MIDIEvent[
+               96, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 127], 
+               Sound`MIDIEvent[
+               144, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               144, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               192, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               192, "NoteOn", "Note" -> 60, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               240, "NoteOff", "Note" -> 60, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               240, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               288, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               288, "NoteOn", "Note" -> 72, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               336, "NoteOff", "Note" -> 72, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               336, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               384, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               384, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               432, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               432, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               480, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               480, "NoteOn", "Note" -> 60, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               528, "NoteOff", "Note" -> 60, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               528, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               576, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               576, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               624, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               624, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               672, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               672, "NoteOn", "Note" -> 60, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               720, "NoteOff", "Note" -> 60, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               720, "NoteOn", "Note" -> 36, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               768, "NoteOff", "Note" -> 36, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               768, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               816, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               816, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               864, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               864, "NoteOn", "Note" -> 60, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               912, "NoteOff", "Note" -> 60, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               912, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               960, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 0], 
+               Sound`MIDIEvent[
+               960, "NoteOn", "Note" -> 72, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1008, "NoteOff", "Note" -> 72, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1008, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1056, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1056, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1104, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1104, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1152, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1152, "NoteOn", "Note" -> 60, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1200, "NoteOff", "Note" -> 60, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1200, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1248, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1248, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1296, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                0], 
+               Sound`MIDIEvent[
+               1296, "NoteOn", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                127], 
+               Sound`MIDIEvent[
+               1344, "NoteOff", "Note" -> 48, "Channel" -> 0, "Velocity" -> 
+                0]}]}, "DivisionType" -> "PPQ", "Resolution" -> 240]]; 
+         Sound`EmitSampledSound[None, "Preemptive"], 
+         FEPrivate`EmitSound[None, "Preemptive"]], Method -> "Preemptive", 
+       PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+    TagBox[{
+      {RGBColor[0.9568627450980393, 0.9568627450980393, 0.9568627450980393], 
+       RectangleBox[{29, -158}, {53, -135}]}, 
+      {RGBColor[0.27450980392156865`, 0.5411764705882353, 0.796078431372549], 
+       RectangleBox[{35, -152}, {47, -141}], 
+       StyleBox[{},
+        Antialiasing->False]}},
+     EventHandlerTag[{"MouseClicked" :> If[True, Sound`EmitSampledSound[
+           SampledSoundList[{{0.}}, 8000], "Preemptive"]; Sound`StopMIDI[], 
+         FEPrivate`EmitSound[
+          SampledSoundList[{{0.}}, 8000], "Preemptive"]], Method -> 
+       "Preemptive", PassEventsDown -> Automatic, PassEventsUp -> True}]], 
+    {GrayLevel[0.75], 
+     StyleBox[LineBox[{{0, 0}, {360, 0}, {360, -164}, {0, -164}, {0, 0}}],
+      Antialiasing->False]}},
+   ContentSelectable->False,
+   ImageSize->250,
+   PlotRange->{{0, 360}, {-164, 0}},
+   PlotRangePadding->1],
+  Sound[{
+    SoundNote[0, 0.2, "JazzGuitar"], 
+    SoundNote[-24, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[0, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[0, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[0, 0.2, "JazzGuitar"], 
+    SoundNote[-24, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[0, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[0, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"], 
+    SoundNote[-12, 0.2, "JazzGuitar"]}]]], "Output",
+ CellChangeTimes->{3.541594914123047*^9, 3.5415949625189238`*^9, 
+  3.541595396423729*^9, 3.541598352691394*^9, 3.5415983856931753`*^9, 
+  3.982236412729491*^9},
+ CellLabel->"Out[70]=",ExpressionUUID->"eab237a3-1428-4913-80ce-90c70fa67b13"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<MarkH_HisMelody.mid\>\"", ",", " ", "g"}], "]"}]], "Input",
+ CellChangeTimes->{{3.98223638252726*^9, 3.982236421911433*^9}},
+ CellLabel->"In[73]:=",ExpressionUUID->"55e8ad28-2de7-48ef-b682-d243e896b1cb"],
+
+Cell[BoxData["\<\"MarkH_HisMelody.mid\"\>"], "Output",
+ CellChangeTimes->{{3.982236412829637*^9, 3.982236424992692*^9}},
+ CellLabel->"Out[73]=",ExpressionUUID->"f98e0f5f-5f22-40e8-9e0f-306bbcd632a3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Hue", "[", 
+         RowBox[{"0.8", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", "5"}], "]"}], "]"}], "/", "127"}]}], "]"}], 
+        ",", 
+        RowBox[{"Rectangle", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", 
+              RowBox[{"{", 
+               RowBox[{"2", ",", "4"}], "}"}]}], "]"}], "]"}], "+", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"-", "0.5"}]}], "}"}]}], ",", 
+          RowBox[{
+           RowBox[{"#", "[", 
+            RowBox[{"[", 
+             RowBox[{"2", ",", 
+              RowBox[{"{", 
+               RowBox[{"2", ",", "4"}], "}"}]}], "]"}], "]"}], "+", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0.5"}], "}"}]}]}], "]"}]}], "}"}], "&"}], "/@",
+      "notes"}], ",", 
+    RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+    RowBox[{"AspectRatio", "\[Rule]", "0.5"}]}], "]"}], "     ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Show", " ", "the", " ", "notes", " ", "on", " ", "a", " ", "grid"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.541594418502099*^9, 3.541594418516121*^9}, 
+   3.5415944599908867`*^9, {3.541594773323255*^9, 3.541594791072949*^9}},
+ CellLabel->"In[72]:=",ExpressionUUID->"d7150cd5-f0c0-4992-9f7c-fa3bd0554851"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {Hue[0.5984251968503937], RectangleBox[{0, 59.5}, {36, 60.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{49, 35.5}, {60, 36.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{73, 47.5}, {83, 48.5}]}, 
+   {Hue[0.8], RectangleBox[{96, 47.5}, {109, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{120, 59.5}, {133, 60.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{146, 47.5}, {156, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{168, 71.5}, {202, 72.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{193, 47.5}, {229, 48.5}]}, 
+   {Hue[0.8], RectangleBox[{240, 47.5}, {253, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{264, 47.5}, {276, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{288, 59.5}, {300, 60.5}]}, 
+   {Hue[0.8], RectangleBox[{313, 47.5}, {323, 48.5}]}, 
+   {Hue[0.8], RectangleBox[{336, 47.5}, {347, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{360, 47.5}, {373, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{384, 59.5}, {421, 60.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{433, 35.5}, {444, 36.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{457, 47.5}, {469, 48.5}]}, 
+   {Hue[0.8], RectangleBox[{480, 47.5}, {493, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{504, 59.5}, {516, 60.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{529, 47.5}, {540, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{551, 71.5}, {586, 72.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{577, 47.5}, {612, 48.5}]}, 
+   {Hue[0.8], RectangleBox[{624, 47.5}, {637, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{647, 47.5}, {660, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{672, 59.5}, {684, 60.5}]}, 
+   {Hue[0.8], RectangleBox[{697, 47.5}, {707, 48.5}]}, 
+   {Hue[0.8], RectangleBox[{721, 47.5}, {731, 48.5}]}, 
+   {Hue[0.5984251968503937], RectangleBox[{744, 47.5}, {757, 48.5}]}},
+  AspectRatio->0.5,
+  Frame->True]], "Output",
+ CellChangeTimes->{3.5415947308837852`*^9, 3.541598352752129*^9, 
+  3.9822364128559217`*^9},
+ CellLabel->"Out[72]=",ExpressionUUID->"1d489b36-1a68-45fe-b473-2822dee15021"]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{150, Automatic}, {55, Automatic}},
+PrivateNotebookOptions->{"VersionedStylesheet"->{"Default.nb"[8.] -> False}},
+FrontEndVersion->"13.2 for Mac OS X x86 (64-bit) (November 18, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7c68f889-e7ba-41a1-a18f-f9852a32b4d6"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 3670, 51, 346, "Input",ExpressionUUID->"7c112dee-77e5-47e8-b4e7-c88758334885"],
+Cell[CellGroupData[{
+Cell[4252, 75, 232, 4, 30, "Input",ExpressionUUID->"8cbd5333-2efc-4923-bc26-05f693e07f91"],
+Cell[4487, 81, 220, 3, 34, "Output",ExpressionUUID->"7e7e288c-0505-426c-b6fa-618283cef014"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4744, 89, 244, 4, 30, "Input",ExpressionUUID->"b287c47f-3066-404e-9820-a3e1c3bebc05"],
+Cell[4991, 95, 224, 3, 34, "Output",ExpressionUUID->"958f9a6d-f9cb-4695-967a-e85efe5c7bb4"]
+}, Open  ]],
+Cell[5230, 101, 4266, 120, 452, "Input",ExpressionUUID->"3c1ec196-5e68-42ca-ac89-3a9dc5099bcb"],
+Cell[CellGroupData[{
+Cell[9521, 225, 1347, 36, 136, "Input",ExpressionUUID->"134007ac-017e-41e3-8508-7a2291adeceb"],
+Cell[10871, 263, 7258, 227, 602, "Output",ExpressionUUID->"3513ff73-35b1-49b7-967b-e14c3a64266d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18166, 495, 921, 23, 52, "Input",ExpressionUUID->"e51290e7-a8ef-452d-82a2-1f6c0eef858e"],
+Cell[19090, 520, 14182, 306, 132, "Output",ExpressionUUID->"eab237a3-1428-4913-80ce-90c70fa67b13"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33309, 831, 257, 4, 30, "Input",ExpressionUUID->"55e8ad28-2de7-48ef-b682-d243e896b1cb"],
+Cell[33569, 837, 199, 2, 82, "Output",ExpressionUUID->"f98e0f5f-5f22-40e8-9e0f-306bbcd632a3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33805, 844, 1500, 43, 94, "Input",ExpressionUUID->"d7150cd5-f0c0-4992-9f7c-fa3bd0554851"],
+Cell[35308, 889, 2107, 34, 207, "Output",ExpressionUUID->"1d489b36-1a68-45fe-b473-2822dee15021"]
+}, Open  ]]
+}
+]
+*)
+
