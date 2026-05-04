@@ -1,0 +1,179 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Bold;\f2\froman\fcharset0 Times-Roman;
+\f3\fnil\fcharset0 STIXTwoMath-Regular;\f4\fmodern\fcharset0 Courier;\f5\fnil\fcharset0 HelveticaNeue;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red179\green179\blue179;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c0\c0\c84706;\cssrgb\c75294\c75294\c75294;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 // roto_mandel.cpp\
+#include <bits/stdc++.h>\
+using namespace std;\
+\
+struct C \{ double re, im; \};\
+inline C add(const C &a, const C &b)\{ return \{a.re+b.re, a.im+b.im\}; \}\
+inline C sq(const C &a)\{ return \{a.re*a.re - a.im*a.im, 2*a.re*a.im\}; \}\
+inline double mag2(const C &a)\{ return a.re*a.re + a.im*a.im; \}\
+\
+int main()\{\
+    // Grid and sampling parameters\
+    const int NA = 120; // samples for a\
+    const int NB = 120; // samples for b\
+    const int NX = 60;  // samples for x0\
+    const int NY = 60;  // samples for y0\
+    const int maxIter = 500;\
+    const double aMin=-2.0, aMax=1.0;\
+    const double bMin=-1.5, bMax=1.5;\
+    const double xMin=-1.5, xMax=1.5;\
+    const double yMin=-1.5, yMax=1.5;\
+\
+    // Rotation angle in radians (change to animate)\
+    const double theta = 0.8; // rotate in XW plane\
+    const double cosT = cos(theta), sinT = sin(theta);\
+\
+    ofstream out("points.csv");\
+    out << "x,y,z,iter\\n";\
+\
+    for(int ia=0; ia<NA; ++ia)\{\
+        double a = aMin + (aMax-aMin) * ia / (NA-1);\
+        for(int ib=0; ib<NB; ++ib)\{\
+            double b = bMin + (bMax-bMin) * ib / (NB-1);\
+            C c\{a,b\};\
+            for(int ix=0; ix<NX; ++ix)\{\
+                double x0 = xMin + (xMax-xMin) * ix / (NX-1);\
+                for(int iy=0; iy<NY; ++iy)\{\
+                    double y0 = yMin + (yMax-yMin) * iy / (NY-1);\
+                    C z\{ x0, y0 \};\
+                    int iter=0;\
+                    while(iter < maxIter && mag2(z) <= 4.0)\{\
+                        z = add(sq(z), c);\
+                        ++iter;\
+                    \}\
+                    // Keep points that did NOT escape (inside set) or optionally those that escaped\
+                    if(iter == maxIter)\{\
+                        // 4D point: (a, b, x0, y0)\
+                        double X = a, Y = b, Z = x0, W = y0;\
+                        // rotate in XW plane: (X', W') = (cosT*X - sinT*W, sinT*X + cosT*W)\
+                        double Xp = cosT*X - sinT*W;\
+                        double Wp = sinT*X + cosT*W;\
+                        // project 4D (Xp, Y, Z, Wp) to 3D by dropping Wp into Z axis offset\
+                        double px = Xp;\
+                        double py = Y;\
+                        double pz = Z + 0.5 * Wp;\
+                        out << px << "," << py << "," << pz << "," << iter << "\\n";\
+                    \}\
+                \}\
+            \}\
+        \}\
+    \}\
+    out.close();\
+    cerr << "Wrote points.csv\\n";\
+    return 0;\
+\}\
+Rem\
+(*
+\f1\b \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Quick answer
+\f2\b0 : Below is a complete, standalone 
+\f1\b C++ program
+\f2\b0  that reproduces the essential behavior of the Mathematica notebook: it samples a 4D parameter space for the quadratic map 
+\f3 \
+\pard\pardeftab720\partightenfactor0
+\cf0 z\
+\uc0\u8614 \
+z\
+\pard\pardeftab720\partightenfactor0
+
+\fs18 \cf0 2\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 +\
+c\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2 \cf0 , tests points for boundedness up to 
+\f1\b 500 iterations
+\f2\b0 , applies a 4D rotation, projects to 3D, and writes a 
+\f1\b points.csv
+\f2\b0  file you can open in any 3D viewer or import into plotting tools. Compile with 
+\f4\fs26 g++ -O3 -std=c++17 -o roto_mandel roto_mandel.cpp
+\f2\fs24  and run 
+\f4\fs26 ./roto_mandel
+\f2\fs24 . 
+\f1\b The program is self-contained and portable.
+\f2\b0 \
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f1\b\fs28 \cf0 Program description\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 This program:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Samples a 4D grid 
+\f3 (\uc0\u8232 a\u8232 ,\u8232 b\u8232 ,\u8232 x\u8232 0\u8232 ,\u8232 y\u8232 0\u8232 )\u8232 \u8232 
+\f2  where 
+\f3 c\uc0\u8232 =\u8232 a\u8232 +\u8232 i\u8232 b\u8232 \u8232 
+\f2  and 
+\f3 z\uc0\u8232 
+\fs18 0\uc0\u8232 
+\fs24 \uc0\u8232 =\u8232 x\u8232 0\u8232 +\u8232 i\u8232 y\u8232 0\u8232 \u8232 
+\f2 .\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Iterates 
+\f3 z\uc0\u8232 
+\fs18 n\uc0\u8232 +\u8232 1\u8232 \u8232 
+\fs24 \uc0\u8232 =\u8232 z\u8232 
+\fs18 n\uc0\u8232 2\u8232 
+\fs24 \uc0\u8232 +\u8232 c\u8232 \u8232 
+\f2  up to 
+\f1\b 500
+\f2\b0  iterations and keeps points that remain bounded (escape radius > 2 means escape).\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Applies a rotation in the XW plane by an angle 
+\f4\fs26 theta
+\f2\fs24  and projects the rotated 4D point to 3D for visualization.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Writes 
+\f4\fs26 points.csv
+\f2\fs24  with lines 
+\f4\fs26 x,y,z,iter
+\f2\fs24  (iter = number of iterations before escape or 500 if bounded).\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 This mirrors the Mathematica approach of sampling parameter space and plotting with ListPointPlot3D.  The idea of rotating 4D cross sections to produce changing 3D slices is commonly used for 4D Mandelbrot visualizations. 
+\f5\fs22 \cf3 \cb4 \strokec3 YouTube
+\f2\fs24 \cf0 \cb1 \strokec2 \
+*)\
+Rem:\
+(*
+\f1\b\fs28 How to view results\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\ls2\ilvl0
+\f2\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Open 
+\f4\fs26 points.csv
+\f2\fs24  in 
+\f1\b ParaView
+\f2\b0 , 
+\f1\b MeshLab
+\f2\b0 , Excel, or import into Python/Matplotlib for 3D scatter plotting.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 To change the rotation or sampling density, edit 
+\f4\fs26 theta
+\f2\fs24 , 
+\f4\fs26 NA
+\f2\fs24 , 
+\f4\fs26 NB
+\f2\fs24 , 
+\f4\fs26 NX
+\f2\fs24 , 
+\f4\fs26 NY
+\f2\fs24 , and recompile.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa240\partightenfactor0
+\cf0 *)}
