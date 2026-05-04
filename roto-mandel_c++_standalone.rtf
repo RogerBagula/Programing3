@@ -1,0 +1,105 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 // roto_mandel.cpp\
+// Compile: g++ -O3 -std=c++17 -o roto_mandel roto_mandel.cpp\
+// Run: ./roto_mandel\
+#include <bits/stdc++.h>\
+using namespace std;\
+\
+struct Complex \{\
+    double re, im;\
+    Complex() : re(0), im(0) \{\}\
+    Complex(double r, double i) : re(r), im(i) \{\}\
+    inline double mag2() const \{ return re*re + im*im; \}\
+    inline Complex operator+(const Complex &o) const \{ return Complex(re+o.re, im+o.im); \}\
+    inline Complex operator*(const Complex &o) const \{ return Complex(re*o.re - im*o.im, re*o.im + im*o.re); \}\
+\};\
+\
+int main(int argc, char** argv)\{\
+    // Parameters (tweak as desired)\
+    const int NA = 120;   // samples for a (real part of c)\
+    const int NB = 120;   // samples for b (imag part of c)\
+    const int NX = 60;    // samples for x0 (real part of z0)\
+    const int NY = 60;    // samples for y0 (imag part of z0)\
+    const int maxIter = 500;\
+    const double aMin = -2.0, aMax = 1.0;\
+    const double bMin = -1.5, bMax = 1.5;\
+    const double xMin = -1.5, xMax = 1.5;\
+    const double yMin = -1.5, yMax = 1.5;\
+\
+    // Rotation angle (radians) and projection parameters\
+    const double theta = 0.8; // rotate in X-W plane\
+    const double cosT = cos(theta), sinT = sin(theta);\
+    const double wScale = 0.5; // how much W contributes to Z after projection\
+\
+    const string outName = "points.csv";\
+    ofstream out(outName);\
+    if(!out)\{\
+        cerr << "Failed to open " << outName << " for writing\\n";\
+        return 1;\
+    \}\
+    out << "x,y,z,iter\\n";\
+\
+    // Counters for progress\
+    long long total = (long long)NA*NB*NX*NY;\
+    long long written = 0;\
+    long long processed = 0;\
+    const long long progressStep = max(1LL, total / 100);\
+\
+    for(int ia=0; ia<NA; ++ia)\{\
+        double a = aMin + (aMax - aMin) * ia / double(max(NA-1,1));\
+        for(int ib=0; ib<NB; ++ib)\{\
+            double b = bMin + (bMax - bMin) * ib / double(max(NB-1,1));\
+            Complex c(a,b);\
+            for(int ix=0; ix<NX; ++ix)\{\
+                double x0 = xMin + (xMax - xMin) * ix / double(max(NX-1,1));\
+                for(int iy=0; iy<NY; ++iy)\{\
+                    double y0 = yMin + (yMax - yMin) * iy / double(max(NY-1,1));\
+                    Complex z(x0,y0);\
+                    int iter = 0;\
+                    while(iter < maxIter && z.mag2() <= 4.0)\{\
+                        // z = z^2 + c\
+                        z = z * z + c;\
+                        ++iter;\
+                    \}\
+                    // Keep points that did NOT escape (inside set)\
+                    if(iter == maxIter)\{\
+                        // 4D point (X,Y,Z,W) = (a, b, x0, y0)\
+                        double X = a;\
+                        double Y = b;\
+                        double Z = x0;\
+                        double W = y0;\
+                        // Rotate in X-W plane\
+                        double Xp = cosT * X - sinT * W;\
+                        double Wp = sinT * X + cosT * W;\
+                        // Project 4D -> 3D: (Xp, Y, Z + wScale*Wp)\
+                        double px = Xp;\
+                        double py = Y;\
+                        double pz = Z + wScale * Wp;\
+                        out << px << "," << py << "," << pz << "," << iter << "\\n";\
+                        ++written;\
+                    \}\
+                    ++processed;\
+                    if(processed % progressStep == 0)\{\
+                        cerr << "\\rProcessed " << (processed*100/total) << "%, points written: " << written << flush;\
+                    \}\
+                \}\
+            \}\
+        \}\
+    \}\
+    cerr << "\\rProcessed 100%, points written: " << written << "\\n";\
+    out.close();\
+    cerr << "Wrote " << outName << "\\n";\
+    return 0;\
+\}\
+To Compile:\
+g++ -O3 -std=c++17 -o roto_mandel roto_mandel.cpp\
+To run:\
+./roto_mandel\
+\
+}
